@@ -7,7 +7,7 @@ In this assignment you are supposed to practice CI in order to develop a module
 which has two functions to insert and extract data with a given length in bits and a
 given start position to/from a buffer.
 An example buffer:
-
+![example buffer](example.png)
 
 For example buffer_insert(array, 12, 6, 24) writes 011000 into bits 4 to 7 of array[1]
 and bits 0 and 1 of array[2]. If we call buffer_extract(array, 12, 6) it shall return 24.
