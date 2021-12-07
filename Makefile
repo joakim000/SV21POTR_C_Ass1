@@ -15,7 +15,7 @@ CFLAGS = -std=c11 -O3 -pg -g
 LFLAGS = -pg
 else
 ifdef DEBUG
-CFLAGS = -std=c11 -O0 -g -DDEBUG
+CFLAGS = -std=c11 -O0 -g -D DEBUG
 else
 CFLAGS = -std=c11 -O3 
 endif
