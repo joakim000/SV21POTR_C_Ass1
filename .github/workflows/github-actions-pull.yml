@@ -1,0 +1,16 @@
+name: Merge feature to main
+on: [pull_request]
+  pull_request:
+    branches:
+      - main
+jobs:
+  build-test-module:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: make
+      - run: ./bin/test_buffer
+      
+
+
+
