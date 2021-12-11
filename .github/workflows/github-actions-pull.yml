@@ -9,8 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: mkdir ./build
       - run: make
       - run: ./bin/test_buffer
+      - run: rm -rf ./build
+      
 
 
 
