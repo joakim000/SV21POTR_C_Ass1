@@ -1,5 +1,5 @@
 name: Merge feature to main
-on: [pull_request]
+on:   
   pull_request:
     branches:
       - main
