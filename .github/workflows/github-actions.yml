@@ -1,18 +1,1 @@
-name: Merge feature to main, push to main
-on:
- push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
-
-
-jobs:
-  Build-Test-Module:
-    runs-on: ubuntu-latest
-    steps:
-
-
 
