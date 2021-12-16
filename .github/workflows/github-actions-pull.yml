@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  build-test-module:
+  build-test:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -18,7 +18,7 @@ jobs:
       - name: clean up 
         run: rm -rf ./build
   release:
-    needs: build
+    needs: build-test
     runs-on: ubuntu-latest
     steps:
       - name: install
