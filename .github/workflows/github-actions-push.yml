@@ -17,18 +17,28 @@ jobs:
         run: make test
       - name: clean up 
         run: rm -rf ./build
+      - name: persist executable
+        uses: actions/upload-artifact@v2
+        with:
+          name: test_buffer-executable
+          path: ./bin/test_buffer
   release:
-    needs: build
+    needs: build-test
     runs-on: ubuntu-latest
     steps:
-      # - name: install
-      #   run: |
-      #     sudo apt-get install zip
-      #     sudo apt-get install build-essential
-      # - name: create release dir
-      #   run: mkdir release
-      # - name: package
-      #   run: zip release/test_buffer.zip bin/test_buffer 
+      - name: install
+        run: |
+          sudo apt-get install zip
+          sudo apt-get install build-essential
+      - name: create release dir
+        run: mkdir release
+      - name: download executable
+        uses: actions/download-artifact@v2
+        with:
+          name: test_buffer-executable
+          path: ./bin/test_buffer
+      - name: package
+        run: zip ./release/test_buffer.zip ./bin/test_buffer 
       - name: auto release
         uses: marvinpinto/action-automatic-releases@v1.1.1
         with:
@@ -37,7 +47,3 @@ jobs:
           prerelease: true
           title: Latest Version
           files: ./release/test_buffer.zip
-
-
-
-
