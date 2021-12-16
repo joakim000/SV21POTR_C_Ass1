@@ -5,7 +5,6 @@ on:
       - main
 jobs:
   build:
-    name: build & test
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -14,12 +13,13 @@ jobs:
         run: mkdir ./build
       - name: build
         run: make
-      - name: run test
-        run: ./bin/test_buffer
+      - name: test build
+        run: make test
       - name: clean up 
         run: rm -rf ./build
   release:
     name: release
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: install
