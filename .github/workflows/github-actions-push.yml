@@ -26,19 +26,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      # - name: install
-        # run: |
-          # sudo apt-get install zip
-          # sudo apt-get install build-essential
-      # - name: create release dir
-        # run: mkdir release
       - name: download executable
         uses: actions/download-artifact@v2
         with:
           name: test_buffer-executable
           path: ./bin/test_buffer
-      # - name: package
-        # run: zip ./release/test_buffer.zip ./bin/test_buffer 
       - name: auto release
         uses: marvinpinto/action-automatic-releases@v1.1.1
         with:
