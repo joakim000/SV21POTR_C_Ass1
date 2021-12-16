@@ -17,7 +17,7 @@ jobs:
       - name: run test
         run: ./bin/test_buffer
       - name: clean up 
-      - run: rm -rf ./build
+        run: rm -rf ./build
       
 
 
