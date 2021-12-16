@@ -2,7 +2,7 @@
 
 #include "buffer.h"
 
-#define DEBUG
+// #define DEBUG
 
 #define BITSPERBYTE 8
 #define BUFSIZE sizeof(uint64_t)
