@@ -4,8 +4,7 @@ on:
     branches:
       - main
 jobs:
-  build-test-module:
-    name: build & test
+  build-test:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -18,8 +17,6 @@ jobs:
         run: make test
       - name: clean up 
         run: rm -rf ./build
-      
-
 
 
 
