@@ -18,7 +18,6 @@ jobs:
       - name: clean up 
         run: rm -rf ./build
   release:
-    name: release
     needs: build
     runs-on: ubuntu-latest
     steps:
