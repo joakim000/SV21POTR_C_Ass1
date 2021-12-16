@@ -15,7 +15,7 @@ jobs:
       - name: build
         run: make
       - name: run test
-        run: ./bin/test_buffer
+        run: make test
       - name: clean up 
         run: rm -rf ./build
       

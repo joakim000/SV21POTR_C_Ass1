@@ -22,15 +22,14 @@ jobs:
     name: release
     runs-on: ubuntu-latest
     steps:
-      name: install
+      - name: install
         run: |
           sudo apt-get install zip
           sudo apt-get install build-essential
       - name: create release dir
         run: mkdir ./release
       - name: package
-        run: |
-          zip ./release/test_buffer.zip ./bin/test_buffer 
+        run: zip ./release/test_buffer.zip ./bin/test_buffer 
       - name: auto release
         uses: marvinpinto/action-automatic-releases@v1.1.1
         with:
