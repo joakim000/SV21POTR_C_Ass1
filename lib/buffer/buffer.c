@@ -3,6 +3,7 @@
 #include "buffer.h"
 
 // #define DEBUG
+// #define DEBUG2
 
 #define BITSPERBYTE 8
 #define BUFSIZE sizeof(uint64_t)
@@ -35,17 +36,21 @@ void buffer_insert(uint8_t *buffer, uint8_t start, uint8_t length, uint64_t valu
             bits[byte_index * 8 + bit_index] = bit ? 1 : 0;
         }
     #ifdef DEBUG
-    i82p(bits, length, 0, 0, 1);
+    i82p(bits, 64, 0, 0, 1);
+    for (int i = 0; i < sizeof(uint64_t); i++) 
+        printf("%u ", *(buffer + 1));
+        // i82p(buffer + i, BITSPERBYTE, 0, 0, 1);
+    puts("");
     #endif
 
     int8_t write_bit = -1;
     int8_t write_byte = -1;
-    #ifdef DEBUG
+    #ifdef DEBUG2
     printf("b4 write forloop. bit_index:%d write_bit:%d write_byte:%d\n", bit_index, write_bit, write_byte);
     #endif
 
     for (uint8_t write_bit_index = 0; write_bit_index < length; write_bit_index++) {   
-        #ifdef DEBUG
+        #ifdef DEBUG2
         printf("write forloop b4 while. write_bit_index:%d write_bit:%d \n", write_bit_index, write_bit);
         #endif
 
@@ -53,12 +58,12 @@ void buffer_insert(uint8_t *buffer, uint8_t start, uint8_t length, uint64_t valu
             write_bit++;
             if (write_bit % BITSPERBYTE == 0)
                 write_byte++;
-            #ifdef DEBUG        
+            #ifdef DEBUG2        
             printf("write while. bit_index:%d write_bit:%d write_byte:%d\n", write_bit_index, write_bit, write_byte);
             #endif
         }
         
-        #ifdef DEBUG
+        #ifdef DEBUG2
         printf("write forloop after while. bit_index:%d write_bit:%d write_byte:%d\n", write_bit_index, write_bit, write_byte);
         #endif
 
@@ -81,7 +86,7 @@ uint64_t buffer_extract(uint8_t *buffer, uint8_t start, uint8_t length) {
     int8_t read_byte = -1;
 
     for (uint8_t read_bit_index = 0; read_bit_index < length; read_bit_index++) {   
-        #ifdef DEBUG
+        #ifdef DEBUG2
         printf("read forloop b4 while. read_bit_index:%d read_bit:%d \n", read_bit_index, read_bit);
         #endif
 
@@ -89,12 +94,12 @@ uint64_t buffer_extract(uint8_t *buffer, uint8_t start, uint8_t length) {
             read_bit++;
             if (read_bit % BITSPERBYTE == 0)
                 read_byte++;
-            #ifdef DEBUG        
+            #ifdef DEBUG2     
             printf("read while. bit_index:%d read_bit:%d read_byte:%d\n", read_bit_index, read_bit, read_byte);
             #endif
         }
         
-        #ifdef DEBUG
+        #ifdef DEBUG2
         printf("read forloop after while. bit_index:%d read_bit:%d read_byte:%d\n", read_bit_index, read_bit, read_byte);
         #endif
 
