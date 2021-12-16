@@ -1,18 +1,23 @@
-name: Merge feature to main
+name: Test on pull req
 on:   
   pull_request:
     branches:
       - main
-  push:
 jobs:
   build-test-module:
+    name: build & test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: mkdir ./build
-      - run: make
-      - run: ./bin/test_buffer
-      - run: rm -rf ./build
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: create build dir
+        run: mkdir ./build
+      - name: build
+        run: make
+      - name: run test
+        run: make test
+      - name: clean up 
+        run: rm -rf ./build
       
 
 

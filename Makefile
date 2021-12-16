@@ -4,10 +4,13 @@
 .DELETE_ON_ERROR :
 
 SRC = src/
+BIN = bin/
 TEST = test/
 BUILD = build/
 LIB = lib/buffer/
 UNITY = lib/unity/
+
+
 
 LFLAGS = 
 ifdef PROF
@@ -39,8 +42,9 @@ $(BUILD)buffer.o : $(LIB)buffer.c $(LIB)buffer.h
 $(BUILD)unity.o : $(UNITY)unity.c $(UNITY)unity.h
 	cc -c $(CFLAGS) $(UNITY)unity.c -o $(@D)/unity.o -I$(UNITY)
 
-
-
+.PHONY : test
+test: 
+	@./bin/test_buffer
 
 .PHONY : debug
 debug :
