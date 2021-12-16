@@ -23,7 +23,7 @@ jobs:
           name: test_buffer-executable
           path: ./bin/test_buffer
   release:
-    needs: build-test
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: install
