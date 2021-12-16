@@ -26,9 +26,9 @@ jobs:
           sudo apt-get install zip
           sudo apt-get install build-essential
       - name: create release dir
-        run: mkdir ./release
+        run: mkdir release
       - name: package
-        run: zip ./release/test_buffer.zip ./bin/test_buffer 
+        run: zip release/test_buffer.zip bin/test_buffer 
       - name: auto release
         uses: marvinpinto/action-automatic-releases@v1.1.1
         with:
