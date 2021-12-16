@@ -53,6 +53,6 @@ int main(void)
     // RUN_TEST(Test_buffer_insert_wrongLen);
 
 
-    RUN_TEST(Test_fail);
+    // RUN_TEST(Test_fail);
     return UNITY_END();
 }
