@@ -5,7 +5,6 @@ on:
       - main
 jobs:
   build-test-module:
-    name: build & test
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -18,7 +17,28 @@ jobs:
         run: make test
       - name: clean up 
         run: rm -rf ./build
-      
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: install
+        run: |
+          sudo apt-get install zip
+          sudo apt-get install build-essential
+      - name: create release dir
+        run: mkdir release
+      - name: list files
+        run: ls -la ./bin
+      - name: package
+        run: zip ./release/test_buffer.zip ./bin/test_buffer 
+      - name: auto release
+        uses: marvinpinto/action-automatic-releases@v1.1.1
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: latest
+          prerelease: true
+          title: Latest Version
+          files: ./release/test_buffer.zip
 
 
 
