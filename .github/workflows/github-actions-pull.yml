@@ -38,6 +38,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: test_buffer-executable
+          path: ./bin/test_buffer
       - name: list files
         run: ls -la ./bin
       - name: package
